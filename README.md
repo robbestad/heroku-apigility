@@ -229,7 +229,3 @@ A minimal `package.json` file with less will look like this :
 Node and its modules will be available at compilation meaning you could process nodejs script at that time.
 
 
-## Contributing
-
-Please see the [CONTRIBUTING](/CONTRIBUTING.md) file for all the
-details.
