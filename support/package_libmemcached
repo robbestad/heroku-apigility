@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+set -e
+
+basedir="$( cd -P "$( dirname "$0" )" && pwd )"
+source "$basedir/../conf/buildpack.conf"
+
+export PATH=${basedir}/../vendor/bin:$PATH
+
+if [ -z "$S3_BUCKET" ]; then
+    echo "Must set S3_BUCKET environment variable" >&2
+    exit 1
+fi
+
+tempdir="$( mktemp -t libmemcached_xxxx )"
+rm -rf $tempdir
+mkdir -p $tempdir
+cd $tempdir
+
+memcached_version=1.0.17
+
+echo "-----> Downloading libmemcached"
+
+curl -LO "https://launchpad.net/libmemcached/1.0/${memcached_version}/+download/libmemcached-${memcached_version}.tar.gz"
+tar -xzvf "libmemcached-${memcached_version}.tar.gz"
+
+vulcan build --verbose \
+    --name libmemcached \
+    --prefix /app/vendor/libmemcached \
+    --source "$tempdir" \
+    --output "$tempdir/libmemcached-${memcached_version}.tgz" \
+    --command "cd libmemcached-${memcached_version} && mkdir -p /app/vendor/libmemcached && ./configure --without-memcached --prefix=/app/vendor/libmemcached && make && make install"
+
+s3_path=s3://$S3_BUCKET/package/libmemcached-${memcached_version}.tgz
+
+echo "-----> Uploading package to ${s3_path}"
+
+s3cmd put --verbose \
+    --acl-public \
+    "$tempdir/libmemcached-${memcached_version}.tgz" \
+    "${s3_path}"
+
+"$basedir/package-checksum" libmemcached-${memcached_version}
+
+echo "-----> Done building libmemcached package!"
