@@ -382,6 +382,9 @@ if [ ! -f "$FRAMEWORK" ]; then
     exit 1
 fi
 
+echo "-----> INSTALLING MONGO via GEM"
+gem install mongo
+
 "$FRAMEWORK" compile "$BUILD_DIR" "$CACHE_DIR"
 
 install_node_deps "$BUILD_DIR"
