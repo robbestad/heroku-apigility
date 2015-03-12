@@ -23,8 +23,7 @@ return array(
         'ZF\\Rpc',
         'ZF\\Versioning',
         'ZfrCors',
-        'StatusLib',
-        'quiz'
+        'StatusLib'
     ),
     'module_listener_options' => array(
         'module_paths' => array(
