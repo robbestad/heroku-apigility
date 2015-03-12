@@ -1,0 +1,16 @@
+CREATE TABLE album (
+    album_id int NOT NULL primary key,
+    artist text NOT NULL,
+    title text NOT NULL
+);
+ 
+INSERT INTO album (album_id, artist, title)
+    VALUES (1, 'Eninem', 'The Marshall Mathers LP 2');
+INSERT INTO album (album_id, artist, title)
+    VALUES (2, 'James Arthur', 'James Arthur');
+INSERT INTO album (album_id, artist, title)
+    VALUES (3, 'Tinie  Tempah', 'Demonstration');
+INSERT INTO album (album_id, artist, title)
+    VALUES (4, 'Andre Rieu', 'Music of the Night');
+INSERT INTO album (album_id, artist, title)
+    VALUES (5, 'The Overtones', 'Saturday Night at the Movies');
