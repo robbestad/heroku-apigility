@@ -36,9 +36,11 @@ Example real world use: <a href="https://uvapi.herokuapp.com">UV API</a> running
 
 > heroku config:set WWWROOT=/public
 
-Create a Procfile
-
 > echo "web: vendor/bin/heroku-php-apache2 public/" >> Procfile
+
+> composer install
+
+> git commit -am"Initial commit"
 
 > git push heroku master
 
