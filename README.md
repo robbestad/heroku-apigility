@@ -10,6 +10,8 @@ Example base deploy: [Apigility Heroku](http://quiet-garden-8853.herokuapp.com/a
 
 Example real world use: <a href="https://uvapi.herokuapp.com">UV API</a> running on Heroku
 
+    curl -i -H "Accept: application/json" -H "Content-Type: application/json" "http://uvapi.herokuapp.com/forecast/longitude=10,77&latitude=59,94"
+
 ### Requirements
 
 * Heroku account
@@ -17,6 +19,26 @@ Example real world use: <a href="https://uvapi.herokuapp.com">UV API</a> running
 ### Installation
 
 > heroku create
+
+> git push heroku master
+
+> heroku open
+
+### For using with latest version of Apigility
+
+> git clone https://github.com/zfcampus/zf-apigility-skeleton.git 
+
+> cd zf-apigility-skeleton
+
+> heroku create
+
+> heroku config:set BUILDPACK_URL=https://github.com/svenanders/heroku-apigility.git
+
+> heroku config:set WWWROOT=/public
+
+Create a Procfile
+
+> echo "web: vendor/bin/heroku-php-apache2 public/" >> Procfile
 
 > git push heroku master
 
