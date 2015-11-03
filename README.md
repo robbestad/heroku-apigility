@@ -18,30 +18,30 @@ Example real world use: <a href="https://uvapi.herokuapp.com">UV API</a> running
 
 ### Installation
 
-> heroku create
+> $ heroku create
 
-> git push heroku master
+> $ git push heroku master
 
-> heroku open
+> $ heroku open
 
 ### For using with latest version of Apigility
 
-> git clone https://github.com/zfcampus/zf-apigility-skeleton.git 
+> $ git clone https://github.com/zfcampus/zf-apigility-skeleton.git 
 
-> cd zf-apigility-skeleton
+> $ cd zf-apigility-skeleton
 
-> heroku create
+> $ heroku create
 
-> heroku config:set BUILDPACK_URL=https://github.com/svenanders/heroku-apigility.git
+> $ heroku config:set BUILDPACK_URL=https://github.com/svenanders/heroku-apigility.git
 
-> heroku config:set WWWROOT=/public
+> $ heroku config:set WWWROOT=/public
 
-> echo "web: vendor/bin/heroku-php-apache2 public/" >> Procfile
+> $ echo "web: vendor/bin/heroku-php-apache2 public/" >> Procfile
 
-> composer install
+> $ composer install
 
-> git commit -am"Initial commit"
+> $ git commit -am"Initial commit"
 
-> git push heroku master
+> $ git push heroku master
 
-> heroku open
+> $ heroku open
